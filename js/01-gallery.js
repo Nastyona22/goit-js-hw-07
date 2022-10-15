@@ -31,26 +31,24 @@ function createPicturesCards(items) {
  
 function onPictureContainerClick(evt) {
     evt.preventDefault();
-    window.addEventListener('keydown', onEscKeyPress);
+    
 
     const isPictureSwatchEl = evt.target.classList.contains('gallery__image');
 
-  if (!isPictureSwatchEl) {
-    return;
-  }
+    if (!isPictureSwatchEl) {
+        return;
+    }
 
     const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
-    `);
+    `, {
+        onShow: () => window.addEventListener('keydown', onEscKeyPress),
+        onClose: () => window.removeEventListener('keydown', onEscKeyPress)
+    });
 
     instance.show();
 
-    const visible = instance.visible();
-    if (!visible) {
-        window.removeEventListener('keydown', onEscKeyPress);
-
-    }
-
+    
    
     function onEscKeyPress(event) {
         const ESC_KEY_CODE = 'Escape';
@@ -59,14 +57,12 @@ function onPictureContainerClick(evt) {
         if (isEscKey) {
             instance.close();
         };
-    }    
+    }
    
-
 }
 
 
 
-function  modalWinow(){
-    
-};
+
+
 

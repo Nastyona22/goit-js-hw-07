@@ -5,7 +5,6 @@ const galleryContainer = document.querySelector('.gallery');
 const picturesMarkup = createPicturesCards(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', picturesMarkup);
-galleryContainer.addEventListener('click', onPictureContainerClick);
 
 
 function createPicturesCards(items) {
@@ -19,21 +18,10 @@ function createPicturesCards(items) {
         })
         .join('');
 }
-
-function onPictureContainerClick(evt) {
-    evt.preventDefault();
-
-    const isPictureSwatchEl = evt.target.classList.contains('gallery__image');
-
-    if (!isPictureSwatchEl) {
-        return;
-    }
-
     
-    var lightbox = new SimpleLightbox('.gallery a',
+    const lightbox = new SimpleLightbox('.gallery a',
         {
         captionsData: 'alt',
         captionDelay: 250,
         }
     );
-}
