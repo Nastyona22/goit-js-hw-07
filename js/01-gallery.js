@@ -33,7 +33,7 @@ function onPictureContainerClick(evt) {
     evt.preventDefault();
     
 
-    const isPictureSwatchEl = evt.target.classList.contains('gallery__image');
+    const isPictureSwatchEl = evt.target.nodeName === 'IMG';
 
     if (!isPictureSwatchEl) {
         return;
@@ -60,6 +60,7 @@ function onPictureContainerClick(evt) {
     }
    
 }
+
 
 
 
